@@ -19,6 +19,16 @@ module Api
         render json: Moment.all.order(event_date: :desc), status: :ok
       end
 
+      def destroy
+        success = Moment.find(params[:id]).delete
+
+        if success
+          render json: { message: 'successfully deleted record' }
+        else
+          render json: { message: 'unable to delete record' }
+        end
+      end
+
       private
 
       def create_moment_params
