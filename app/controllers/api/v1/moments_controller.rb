@@ -5,7 +5,8 @@ module Api
         moment = Moment.create(
           title: create_moment_params[:title],
           description: create_moment_params[:description],
-          event_date: create_moment_params[:event_date]
+          event_date: create_moment_params[:event_date],
+          user_id: @current_user.id
         )
 
         if moment.valid?
@@ -16,7 +17,7 @@ module Api
       end
 
       def index
-        render json: Moment.all.order(event_date: :desc), status: :ok
+        render json: @current_user.moments.order(event_date: :desc), status: :ok
       end
 
       def destroy
