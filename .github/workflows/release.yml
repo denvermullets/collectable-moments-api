@@ -27,6 +27,8 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_SEMANTIC }}
+        with:
+          node-version: 16
         run: npx semantic-release
 
       - name: Checkout
@@ -37,6 +39,7 @@ jobs:
       - name: Merge main into develop
         uses: everlytic/branch-merge@1.1.0
         with:
+          node-version: 16
           github_token: ${{ secrets.GH_SEMANTIC }}
           source_ref: ${{ github.ref }}
           target_branch: "develop"
