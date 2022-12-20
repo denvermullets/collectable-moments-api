@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :moments
+  namespace :api do
+    namespace :v1, defaults: { format: :json } do
+      resources :moments
+      post '/sign-up', to: 'users#create', as: :user_sign_up
+      post '/sign-in', to: 'sessions#create', as: :user_login
+    end
+  end
 end
