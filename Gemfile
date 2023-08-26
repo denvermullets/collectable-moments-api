@@ -11,7 +11,7 @@ gem 'dotenv-rails'
 gem 'jwt'
 gem 'pg', '~> 1.1'
 gem 'pry-byebug'
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 5.6'
 gem 'rack-cors'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
